@@ -17,7 +17,7 @@ class App {
   }
 
   views () {
-    nunjucks.cofigure(path.resolve(__dirname, 'app', 'views'), {
+    nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {
       watch: this.isDev,
       express: this.express,
       autoescape: true
@@ -26,7 +26,9 @@ class App {
     this.express.set('view engine', 'njk')
   }
 
-  routes () {}
+  routes () {
+    this.express.use(require('./routes'))
+  }
 }
 
 module.exports = new App().express
