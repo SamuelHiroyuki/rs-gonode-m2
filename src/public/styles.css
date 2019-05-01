@@ -90,6 +90,7 @@ body {
 	font-size: 13px;
 	color: #444;
 	align-self: center;
+	display: flex;
 }
 
 .auth-wrapper form label[for="provider"] input {
