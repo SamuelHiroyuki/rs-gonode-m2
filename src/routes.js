@@ -9,6 +9,14 @@ const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
 
 const routes = express.Router()
+
+routes.use((req, res, next) => {
+  res.locals.flashSuccess = req.flash('success')
+  res.locals.flashError = req.flash('error')
+
+  return next()
+})
+
 routes.use('/app/', authMiddleware)
 
 routes.get('/', guestMiddleware, SessionController.create)
