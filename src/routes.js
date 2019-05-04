@@ -17,6 +17,7 @@ routes.post('/signin', SessionController.post)
 routes.get('/signup', guestMiddleware, UserController.create)
 routes.post('/signup', upload.single('avatar'), UserController.post)
 
+routes.get('/app/logout', SessionController.destroy)
 routes.get('/app/dashboard', (req, res) => res.render('dashboard'))
 
 module.exports = routes
