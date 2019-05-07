@@ -34,6 +34,8 @@ routes.post('/signup', upload.single('avatar'), UserController.post)
 routes.get('/app/logout', SessionController.destroy)
 routes.get('/app/dashboard', DashboardController.index)
 
+routes.get('/app/appointments', AppointmentsController.show)
+
 routes.get('/app/appointments/new/:provider', AppointmentsController.create)
 routes.post('/app/appointments/new/:provider', AppointmentsController.post)
 

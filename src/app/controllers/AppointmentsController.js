@@ -1,4 +1,6 @@
 const { User, Appointment } = require('../models')
+const { Op } = require('sequelize')
+const moment = require('moment')
 
 class AppointmentsController {
   async create (req, res) {
@@ -18,6 +20,37 @@ class AppointmentsController {
     })
 
     return res.redirect('/app/dashboard')
+  }
+
+  async show (req, res) {
+    const { id } = req.session.user
+    let appointments = await Appointment.findAll({
+      where: {
+        provider_id: id,
+        date: {
+          [Op.between]: [
+            moment()
+              .startOf('day')
+              .format(),
+            moment()
+              .endOf('day')
+              .format()
+          ]
+        }
+      },
+      include: [
+        {
+          model: User,
+          as: 'user'
+        }
+      ]
+    })
+
+    appointments.forEach(a => {
+      a.available = moment(a.date).isAfter(moment())
+    })
+
+    return res.render('appointments/list', { appointments })
   }
 }
 

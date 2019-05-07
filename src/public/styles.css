@@ -155,6 +155,24 @@ body {
 	margin-bottom: 20px;
 }
 
+.main-wrapper .content a.appointments {
+	background: #7159c1;
+	text-decoration: none;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	font-weight: bold;
+	font-size: 14px;
+	border: 0;
+	color: #fff;
+}
+
+.main-wrapper .content a.appointments:hover {
+	background: #634dac;
+}
+
 .main-wrapper .content a.logout {
 	background: #de6d6d;
 	text-decoration: none;
@@ -167,6 +185,7 @@ body {
 	font-size: 14px;
 	border: 0;
 	color: #fff;
+	margin-top: 10px;
 }
 
 .main-wrapper .content a.logout:hover {
@@ -222,6 +241,11 @@ ul.providers {
 	color: #444;
 }
 
+.provider i {
+	font-size: 11px;
+	color: #444;
+}
+
 .provider a {
 	background: #7159c1;
 	padding: 5px 10px;
@@ -261,6 +285,11 @@ ul.providers {
 	margin-bottom: 8px;
 	justify-content: center;
 	align-items: center;
+}
+
+.providers li.disabled {
+	opacity: 0.75;
+	background-color: #a0eb9b;
 }
 
 #hours label.disabled {
